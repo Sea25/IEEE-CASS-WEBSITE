@@ -1,16 +1,48 @@
-# React + Vite
+Tech Stack
+React 18 - UI library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vite 5 - Build tool
 
-Currently, two official plugins are available:
+Tailwind CSS 3 - Styling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React Icons - Icon library
 
-## React Compiler
+Framer Motion - Animations
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Vercel - Hosting
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+Key Features
+Fully responsive design (mobile, tablet, desktop)
+
+Hero section with chapter statistics
+
+About section with vision, mission, focus areas
+
+Events section (upcoming/past tabs)
+
+Team grid with hover effects
+
+Contact form with validation
+
+Social media integration
+
+Smooth scroll navigation
+
+IEEE CASS brand compliant
+
+
+Project Structure
+src/
+├── components/
+│   ├── Header/     # Navigation
+│   ├── Hero/       # Landing section
+│   ├── About/      # Vision & mission
+│   ├── Events/     # Event listings
+│   ├── Team/       # Member profiles
+│   └── Contact/    # Form & info
+├── data/           # Dummy data
+├── App.jsx
+├── main.jsx
+└── index.css
