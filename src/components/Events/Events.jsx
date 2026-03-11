@@ -62,6 +62,16 @@ const Events = () => {
 
                       <div className={`absolute top-0 bottom-0 w-1 bg-cass-green transform origin-top transition-transform duration-300 scale-y-0 group-hover:scale-y-100 ${isEven ? 'right-0' : 'left-0'}`}></div>
 
+                      {event.image && (
+                        <div className="w-full h-48 md:h-56 mb-6 rounded-xl overflow-hidden shadow-inner bg-gray-100 border border-gray-100">
+                          <img
+                            src={event.image}
+                            alt={event.title}
+                            className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
+
                       <div className={`flex items-center gap-3 mb-4 text-xs font-bold text-cass-green tracking-wide uppercase ${isEven ? 'md:justify-end' : ''}`}>
                         <span className="flex items-center gap-1.5"><FiCalendar size={14} /> {event.date}</span>
                         <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>

@@ -135,7 +135,7 @@ const Contact = () => {
             &copy; 2026 IEEE Circuits and Systems Society Kerala Section.
           </p>
           <p className="text-gray-500 font-medium text-sm">
-            Designed by <span className="text-yellow-500 font-bold ml-1">Web Team CASS KC</span>
+            Designed by <span className="text-yellow-500 font-bold ml-1">Sona Abraham for CASS Community</span>
           </p>
         </div>
 

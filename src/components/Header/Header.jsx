@@ -52,7 +52,7 @@ const Header = () => {
             />
             <div className="hidden sm:flex flex-col">
               <span className="font-bold text-sm tracking-wide leading-tight">IEEE CASS</span>
-              <span className={`text-[10px] uppercase tracking-widest ${scrolled ? 'text-cass-gray' : 'text-white/70'}`}>Kerala</span>
+              <span className={`text-[10px] uppercase tracking-widest ${scrolled ? 'text-cass-gray' : 'text-white/70'}`}>Kerala Chapter</span>
             </div>
           </a>
 

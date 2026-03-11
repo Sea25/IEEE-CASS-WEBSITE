@@ -32,7 +32,7 @@ const About = () => {
             transition={{ delay: 0.1 }}
             className="md:w-[40%] text-sm text-cass-gray/80 font-light leading-relaxed"
           >
-            We are dedicated to the advancement of theory, analysis, design, and implementation of circuits and systems. We bridge the gap between academic research and practical industry application.
+            The IEEE Circuits and Systems Society Kerala Section is dedicated to advancing the theory and application of circuits and systems. Our student leadership team works tirelessly to bridge the gap between academic learning and industry requirements. We organize technical workshops, seminars, competitions, and networking events to foster innovation and professional development among students and young professionals in Kerala.
           </motion.div>
         </div>
 

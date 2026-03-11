@@ -27,7 +27,7 @@ const Team = () => {
               transition={{ delay: 0.1 }}
               className="text-lg text-white/70 font-light"
             >
-              Hover to expand and learn more about the leading minds pushing the boundaries of circuits and systems in Kerala.
+              Meet the passionate professionals and  individuals leading IEEE CAS Kerala Section towards excellence and innovation.
             </motion.p>
           </div>
         </div>

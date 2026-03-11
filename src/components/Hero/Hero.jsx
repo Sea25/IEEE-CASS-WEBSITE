@@ -31,7 +31,7 @@ const Hero = () => {
                 <FiCpu size={14} />
               </span>
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-cass-gray/80">
-                IEEE CASS Kerala
+                IEEE CASS Kerala Chapter
               </span>
             </div>
 
@@ -43,7 +43,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-base md:text-lg text-cass-gray/80 leading-relaxed font-light mb-10 max-w-lg">
-              We connect researchers, students, and industry leaders across Kerala to share knowledge, foster collaboration, and shape tomorrow's deeply embedded technology.
+              Empowering the next generation of engineers in Circuits and Systems through innovation, collaboration, and excellence in research and education.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">

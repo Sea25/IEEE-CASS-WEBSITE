@@ -3,37 +3,37 @@ export const events = {
   upcoming: [
     {
       id: 1,
-      title: "International Conference on VLSI Design 2026",
-      date: "April 15-17, 2026",
-      location: "Kochi, Kerala",
-      description: "Join us for the premier VLSI design conference featuring industry experts from around the globe. Track: Digital Circuits, Analog Design, and Embedded Systems.",
-      image: "https://placehold.co/600x400/008752/white?text=VLSI+Conference"
+      title: "Technical Talks",
+      date: "November 15-17, 2026",
+      location: "Maker Village, Kochi",
+      description: "IEEE Kerala Section and IEEE Circuits and Systems Society (CASS) Kerala Chapter, in collaboration with Maker Village and IEEE Sahrdaya CASS SBC, proudly present two distinguished speakers delivering expert sessions on cutting-edge innovations shaping the future of computing and intelligent systems",
+      image: "/tec.jpg"
     },
     {
       id: 2,
-      title: "Workshop on Analog Circuit Design",
+      title: "Technical Talk by Prof.Alex P James",
       date: "May 5-6, 2026",
       location: "Trivandrum",
-      description: "Hands-on workshop with leading analog design professionals. Learn practical design techniques from industry experts.",
-      image: "https://placehold.co/600x400/008752/white?text=Analog+Workshop"
+      description: "IEEE Kerala Section and IEEE Circuits and Systems Society (CASS) Kerala chapter, in collaboration with Maker Village and IEEE Sahrdaya CASS SBC, brings to you the expert in the field, Prof. Alex P. James, IEEE CASS Board of Governers (2026-28), Dean of External Linkage and Projects, Digital University Kerala, for an insightful technical talk, the first of many to be held on the day.",
+      image: "/tecba.jpg"
     }
   ],
   past: [
     {
       id: 3,
-      title: "Webinar: Future of Semiconductor Technology",
+      title: "Workshop on System-on-Chip (SoC) Design using VEGA AT1051 RISC-V Processor(Open to all)",
       date: "January 20, 2026",
-      location: "Online",
-      description: "Expert panel discussion on emerging trends in semiconductors with 200+ attendees from across India.",
-      image: "https://placehold.co/600x400/4a4a4a/white?text=Semiconductor+Webinar"
+      location: "MEC ,Trikkakara",
+      description: "Join us for an exciting workshop designed for professionals , where you will get hands-on experience building a System-on-Chip (SoC) using the VEGA AT1051 RISC-V processor from C-DAC on the Arty A7-100T FPGA platform with Xilinx Vivado block design flow.",
+      image: "/soc.png"
     },
     {
       id: 4,
-      title: "Student Design Contest 2025",
+      title: "BITSTREAM:FPGA Based SoC Prototyping",
       date: "December 10-12, 2025",
-      location: "Calicut",
-      description: "Annual student design competition with participation from 20+ colleges across Kerala. Prize pool of ₹1 lakh.",
-      image: "https://placehold.co/600x400/4a4a4a/white?text=Design+Contest"
+      location: "TKM Kollam",
+      description: "The IEEE CASS Kerala Chapter is excited to present ðŸŒ€ BITSTREAM:FPGA Based SoC Prototyping ðŸš€A hands-on session designed to dive deep into the world of Field Programmable Gate Arrays and System on Chip design using Vivado!",
+      image: "/socdp.png"
     }
   ]
 };
@@ -42,64 +42,44 @@ export const events = {
 export const teamMembers = [
   {
     id: 1,
-    name: "Dr. Rajesh Kumar",
+    name: "Mr Libin T.T",
     role: "Chair",
-    qualification: "PhD, IIT Madras",
-    institution: "NIT Calicut",
-    image: "https://placehold.co/300x300/008752/white?text=RK",
-    bio: "Professor with 15+ years in VLSI design. Published 50+ research papers."
+    institution: "Associate Director and Scientist 'F' at C-DAC",
+    image: "/lt.png",
   },
   {
     id: 2,
-    name: "Prof. Smitha Nair",
+    name: "Dr Jagdeesh Kumar P",
     role: "Vice Chair",
-    qualification: "M.Tech, IISc Bangalore",
-    institution: "College of Engineering Trivandrum",
-    image: "https://placehold.co/300x300/008752/white?text=SN",
-    bio: "Head of ECE Dept. Specializes in Analog and Mixed-Signal Design."
+    institution: "Assistant Professor at Model Engineering College,Thrikkakara",
+    image: "/jk.png",
   },
   {
     id: 3,
-    name: "Dr. Manoj P",
+    name: "Dr Elizabeth George",
     role: "Secretary",
-    qualification: "PhD, NUS Singapore",
-    institution: "TKM College of Engineering",
-    image: "https://placehold.co/300x300/008752/white?text=MP",
-    bio: "Senior Member, IEEE. Research focus: Analog Circuits and MEMS."
+    institution: "CHIEF RF Solution Achitect,XARK Technologies Pvt Ltd",
+    image: "/EG.jpeg",
   },
   {
     id: 4,
-    name: "Dr. Lakshmi S",
-    role: "Treasurer",
-    qualification: "PhD, CUSAT",
-    institution: "Cochin University",
-    image: "https://placehold.co/300x300/008752/white?text=LS",
-    bio: "Associate Professor. IEEE WIE coordinator. Expert in Signal Processing."
+    name: "Mohammed Shan",
+    role: "Student Representative",
+    qualification: "Final Year student Pursuing Btech in Electronics and Communication at Cochin University of Science and Technology",
+    image: "/ms.jpg",
   },
   {
     id: 5,
-    name: "Prof. James K",
-    role: "Member",
-    qualification: "M.Tech, IIT Kharagpur",
-    institution: "Rajagiri School of Engineering",
-    image: "https://placehold.co/300x300/008752/white?text=JK",
-    bio: "Asst. Professor. Digital Circuit Design specialist."
-  },
-  {
-    id: 6,
-    name: "Dr. Neethu T",
-    role: "Member",
-    qualification: "PhD, IIT Bombay",
-    institution: "CDAC Trivandrum",
-    image: "https://placehold.co/300x300/008752/white?text=NT",
-    bio: "Research scientist. Specialization: VLSI Signal Processing."
+    name: "Lakshmi Dineshkumar",
+    role: "EC Coordinator",
+    qualification: "Pursuing Btech in Electronics and Communication at Mar Athanasius College of Engineering",
+    image: "/ld.jpg",
+
   }
 ];
 
 // Social media links
 export const socialLinks = {
-  facebook: "https://facebook.com/ieeecasskerala",
-  twitter: "https://twitter.com/ieeecasskerala",
   linkedin: "https://linkedin.com/company/ieeecasskerala",
   instagram: "https://instagram.com/ieeecasskerala",
   youtube: "https://youtube.com/@ieeecasskerala"
