@@ -1,12 +1,14 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FiLinkedin, FiMail } from 'react-icons/fi'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FiArrowRight, FiLinkedin, FiMail } from 'react-icons/fi'
 import { teamMembers } from '../../data/dummyData'
 
 const Team = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(0) // Default expand the first item
+
   return (
-    <section id="team" className="py-20 md:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="team" className="py-24 bg-cass-dark overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
@@ -14,67 +16,126 @@ const Team = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-5xl font-bold text-cass-dark mb-4"
+              className="text-4xl md:text-6xl font-bold text-white mb-6"
             >
-              Executive Committee
+              The Committee
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-cass-gray"
+              className="text-lg text-white/70 font-light"
             >
-              The driving force behind our community's success and continuous growth.
+              Hover to expand and learn more about the leading minds pushing the boundaries of circuits and systems in Kerala.
             </motion.p>
           </div>
         </div>
 
-        {/* Circular Avatar Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-x-12 md:gap-y-16">
-          {teamMembers.map((member, index) => (
-            <motion.div
-              key={member.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.05, duration: 0.4 }}
-              className="flex flex-col items-center text-center group"
-            >
-              {/* Avatar Bubble */}
-              <div className="relative w-40 h-40 md:w-48 md:h-48 mb-6 rounded-full overflow-hidden bg-cass-light shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover filter grayscale-[10%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
-                />
+        {/* 
+          Horizontal Expanding Accordion (Filmstrip)
+          On desktop: Left-to-right flex that expands the hovered card.
+          On mobile: Vertical scrolling stack.
+        */}
+        <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[32rem]">
+          {teamMembers.map((member, index) => {
+            const isHovered = hoveredIndex === index
 
-                {/* Social Overlay triggers on hover of the avatar */}
-                <div className="absolute inset-0 bg-cass-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-cass-dark hover:bg-cass-green hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300">
-                    <FiLinkedin size={18} />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-cass-dark hover:bg-cass-green hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75">
-                    <FiMail size={18} />
-                  </a>
+            return (
+              <motion.div
+                key={member.id}
+                onMouseEnter={() => setHoveredIndex(index)}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className={`relative rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-500 ease-out flex-shrink-0 lg:flex-shrink ${isHovered
+                    ? 'lg:flex-[3] bg-cass-green shadow-2xl h-[28rem] lg:h-full'
+                    : 'lg:flex-[1] bg-white/5 border border-white/10 h-24 lg:h-full group hover:bg-white/10'
+                  }`}
+              >
+                {/* 
+                  Mobile View (Collapsed): Show simple row
+                  Desktop View (Collapsed): Show vertical name
+                */}
+                <div className={`absolute inset-0 p-6 flex items-center lg:items-end lg:justify-center transition-opacity duration-300 ${isHovered ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                  }`}>
+                  {/* Mobile text */}
+                  <div className="lg:hidden flex items-center gap-4 w-full">
+                    <img src={member.image} alt={member.name} className="w-12 h-12 rounded-full object-cover filter grayscale" />
+                    <div>
+                      <h3 className="text-white font-bold">{member.name}</h3>
+                      <p className="text-white/60 text-sm uppercase tracking-wider">{member.role}</p>
+                    </div>
+                  </div>
+
+                  {/* Desktop vertical text */}
+                  <div className="hidden lg:flex w-full h-full pb-8 flex-col items-center justify-end">
+                    <div className="whitespace-nowrap -rotate-180 writing-vertical-rl text-white/50 text-xl font-bold tracking-widest uppercase mb-8 group-hover:text-cass-green transition-colors">
+                      {member.name}
+                    </div>
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-transparent group-hover:border-cass-green transition-colors">
+                      <img src={member.image} alt="Avatar" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all" />
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Info Text */}
-              <h3 className="text-xl font-bold text-cass-dark mb-1 group-hover:text-cass-green transition-colors">
-                {member.name}
-              </h3>
-              <p className="text-cass-green font-semibold text-sm tracking-wide uppercase mb-2">
-                {member.role}
-              </p>
-              <p className="text-sm font-medium text-cass-gray mb-2">
-                {member.institution}
-              </p>
-              <p className="text-xs text-cass-gray/80 line-clamp-3 px-2">
-                {member.bio}
-              </p>
-            </motion.div>
-          ))}
+                {/* Expanded State Content */}
+                <AnimatePresence>
+                  {isHovered && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute inset-0 w-full h-full flex flex-col justify-end"
+                    >
+                      {/* Background Image filling the card */}
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="absolute inset-0 w-full h-full object-cover mix-blend-overlay filter grayscale-[20%] opacity-80"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-cass-dark via-cass-dark/60 to-transparent" />
+
+                      {/* Info Panel over the image */}
+                      <div className="relative z-10 p-6 lg:p-8 w-full">
+                        <motion.div
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <div className="inline-block px-3 py-1 mb-3 bg-white text-cass-green rounded-full font-bold text-xs uppercase tracking-widest">
+                            {member.role}
+                          </div>
+                          <h3 className="text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">
+                            {member.name}
+                          </h3>
+                          <p className="text-white/90 font-medium mb-4 text-sm lg:text-base border-b border-white/20 pb-4 inline-block w-full">
+                            {member.institution} • {member.qualification}
+                          </p>
+                          <p className="text-white/70 text-sm leading-relaxed max-w-md hidden sm:block mb-6">
+                            {member.bio}
+                          </p>
+
+                          <div className="flex gap-4">
+                            <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-cass-dark flex items-center justify-center backdrop-blur-md transition-all">
+                              <FiLinkedin />
+                            </button>
+                            <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-white text-white hover:text-cass-dark flex items-center justify-center backdrop-blur-md transition-all">
+                              <FiMail />
+                            </button>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+              </motion.div>
+            )
+          })}
         </div>
 
       </div>

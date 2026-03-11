@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMenu, FiX } from 'react-icons/fi'
+import { FiMenu, FiX, FiChevronRight } from 'react-icons/fi'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [active, setActive] = useState('#home')
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -22,101 +15,124 @@ const Header = () => {
     { name: 'Contact', href: '#contact' }
   ]
 
-  // Close menu on resize to desktop
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsOpen(false)
-      }
-    }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    const handleScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleClick = (href) => {
+    setActive(href)
+    setIsMobileOpen(false)
+  }
 
   return (
     <>
-      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'
-        }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a href="#home" className="flex items-center gap-3 z-50">
-              <div className="w-10 h-10 bg-cass-green rounded-lg flex items-center justify-center shadow-md">
-                <span className="text-white font-bold text-lg tracking-wider">CA</span>
-              </div>
-              <div className={`flex flex-col ${scrolled ? 'text-cass-dark' : 'text-cass-dark drop-shadow-sm'}`}>
-                <span className="font-bold text-sm md:text-base leading-tight">IEEE CASS</span>
-                <span className="text-xs font-medium opacity-80">Kerala Chapter</span>
-              </div>
-            </a>
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4 pointer-events-none">
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`text-sm font-semibold tracking-wide transition-colors ${scrolled
-                      ? 'text-cass-gray hover:text-cass-green'
-                      : 'text-cass-dark/80 hover:text-cass-green'
-                    }`}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </nav>
-
-            {/* CTA Button (Desktop) */}
-            <div className="hidden md:block">
-              <a
-                href="#contact"
-                className="bg-cass-green text-white px-6 py-2.5 rounded-lg text-sm font-semibold shadow hover:bg-opacity-90 hover:shadow-lg transition-all"
-              >
-                Get Involved
-              </a>
+        {/* The Floating Top Pill Nav */}
+        <motion.nav
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+          className={`relative pointer-events-auto flex items-center justify-between w-full max-w-5xl transition-all duration-500 rounded-full border ${scrolled
+              ? 'bg-white/90 backdrop-blur-xl border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-2 px-4'
+              : 'bg-cass-dark/80 backdrop-blur-md border-white/10 shadow-2xl py-3 px-6 text-white'
+            }`}
+        >
+          {/* Logo Section */}
+          <a href="#home" className={`flex items-center gap-3 relative z-10 ${scrolled ? 'text-cass-dark' : 'text-white'}`}>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${scrolled ? 'bg-cass-green text-white shadow-md' : 'bg-cass-green text-white'}`}>
+              CA
             </div>
+            <div className="hidden sm:flex flex-col">
+              <span className="font-bold text-sm tracking-wide leading-tight">IEEE CASS</span>
+              <span className={`text-[10px] uppercase tracking-widest ${scrolled ? 'text-cass-gray' : 'text-white/70'}`}>Kerala</span>
+            </div>
+          </a>
 
-            {/* Mobile Menu Toggle */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`md:hidden p-2 -mr-2 z-50 transition-colors ${scrolled || isOpen ? 'text-cass-dark' : 'text-cass-dark'
+          {/* Center Links (Desktop) */}
+          <div className="hidden md:flex items-center justify-center absolute inset-0 z-0">
+            <div className="flex items-center gap-2">
+              {navItems.map((item) => {
+                const isActive = active === item.href
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => handleClick(item.href)}
+                    className={`relative px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-300 z-10 ${isActive
+                        ? (scrolled ? 'text-white' : 'text-white')
+                        : (scrolled ? 'text-cass-gray hover:text-cass-dark' : 'text-white/70 hover:text-white')
+                      }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-bubble"
+                        className={`absolute inset-0 rounded-full -z-10 ${scrolled ? 'bg-cass-green shadow-md' : 'bg-cass-green'}`}
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    {item.name}
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Right Action Button (Desktop) */}
+          <div className="hidden md:block relative z-10">
+            <a
+              href="#contact"
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 hover:scale-105 ${scrolled
+                  ? 'bg-cass-dark text-white border-2 border-transparent hover:bg-gray-800'
+                  : 'bg-transparent text-white border-2 border-white/20 hover:bg-white hover:text-cass-dark'
                 }`}
             >
-              {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
+              Join Chapter
+            </a>
           </div>
-        </div>
+
+          {/* Mobile Toggle Button */}
+          <button
+            className={`md:hidden relative z-10 p-2 rounded-full transition-colors ${scrolled ? 'text-cass-dark hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+          >
+            {isMobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </motion.nav>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Slide-out Menu Overlay */}
       <AnimatePresence>
-        {isOpen && (
+        {isMobileOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col md:hidden"
+            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl flex flex-col justify-center px-8 md:hidden"
           >
-            <nav className="flex flex-col gap-6 mt-8">
+            <nav className="flex flex-col gap-6">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-2xl font-bold text-cass-dark hover:text-cass-green border-b border-gray-100 pb-4 transition-colors"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleClick(item.href)}
+                  className="group flex items-center justify-between border-b border-gray-100 pb-4 text-cass-dark text-3xl font-bold"
                 >
-                  {item.name}
+                  <span className="group-hover:text-cass-green transition-colors">{item.name}</span>
+                  <FiChevronRight className="opacity-0 group-hover:opacity-100 text-cass-green transform -translate-x-4 group-hover:translate-x-0 transition-all" />
                 </a>
               ))}
             </nav>
-            <div className="mt-8">
+            <div className="mt-12 text-center">
               <a
                 href="#contact"
-                className="block w-full text-center bg-cass-green text-white py-4 rounded-xl font-bold text-lg"
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsMobileOpen(false)}
+                className="inline-block w-full bg-cass-green text-white py-4 rounded-full text-xl font-bold shadow-lg"
               >
-                Get Involved
+                Join Chapter
               </a>
             </div>
           </motion.div>
