@@ -36,15 +36,21 @@ const Header = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
           className={`relative pointer-events-auto flex items-center justify-between w-full max-w-5xl transition-all duration-500 rounded-full border ${scrolled
-              ? 'bg-white/90 backdrop-blur-xl border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-2 px-4'
-              : 'bg-cass-dark/80 backdrop-blur-md border-white/10 shadow-2xl py-3 px-6 text-white'
+            ? 'bg-white/90 backdrop-blur-xl border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.08)] py-2 px-4'
+            : 'bg-cass-dark/80 backdrop-blur-md border-white/10 shadow-2xl py-3 px-6 text-white'
             }`}
         >
           {/* Logo Section */}
-          <a href="#home" className={`flex items-center gap-3 relative z-10 ${scrolled ? 'text-cass-dark' : 'text-white'}`}>
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${scrolled ? 'bg-cass-green text-white shadow-md' : 'bg-cass-green text-white'}`}>
-              CA
-            </div>
+          <a href="#home" className={`flex items-center gap-3 relative z-10 transition-transform hover:scale-105 ${scrolled ? 'text-cass-dark' : 'text-white'}`}>
+            {/* Removed the circular container and directly displaying the image */}
+            <img
+              src="/IEEE CAS Logo.png"
+              alt="IEEE CASS Kerala Chapter Logo"
+              className="h-10 md:h-12 w-auto object-contain drop-shadow-sm"
+              onError={(e) => {
+                e.target.style.display = 'none';
+              }}
+            />
             <div className="hidden sm:flex flex-col">
               <span className="font-bold text-sm tracking-wide leading-tight">IEEE CASS</span>
               <span className={`text-[10px] uppercase tracking-widest ${scrolled ? 'text-cass-gray' : 'text-white/70'}`}>Kerala</span>
@@ -62,8 +68,8 @@ const Header = () => {
                     href={item.href}
                     onClick={() => handleClick(item.href)}
                     className={`relative px-5 py-2 rounded-full font-semibold text-sm transition-colors duration-300 z-10 ${isActive
-                        ? (scrolled ? 'text-white' : 'text-white')
-                        : (scrolled ? 'text-cass-gray hover:text-cass-dark' : 'text-white/70 hover:text-white')
+                      ? (scrolled ? 'text-white' : 'text-white')
+                      : (scrolled ? 'text-cass-gray hover:text-cass-dark' : 'text-white/70 hover:text-white')
                       }`}
                   >
                     {isActive && (
@@ -85,8 +91,8 @@ const Header = () => {
             <a
               href="#contact"
               className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 hover:scale-105 ${scrolled
-                  ? 'bg-cass-dark text-white border-2 border-transparent hover:bg-gray-800'
-                  : 'bg-transparent text-white border-2 border-white/20 hover:bg-white hover:text-cass-dark'
+                ? 'bg-cass-dark text-white border-2 border-transparent hover:bg-gray-800'
+                : 'bg-transparent text-white border-2 border-white/20 hover:bg-white hover:text-cass-dark'
                 }`}
             >
               Join Chapter
