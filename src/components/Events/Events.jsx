@@ -1,97 +1,93 @@
 import React, { useState } from 'react'
-import { FiCalendar, FiMapPin, FiClock, FiUsers } from 'react-icons/fi'
+import { motion } from 'framer-motion'
+import { FiCalendar, FiMapPin } from 'react-icons/fi'
 import { events } from '../../data/dummyData'
 
 const Events = () => {
   const [activeTab, setActiveTab] = useState('upcoming')
+  const activeEvents = activeTab === 'upcoming' ? events.upcoming : events.past
 
   return (
-    <section id="events" className="section-padding bg-gray-50">
-      <div className="container-custom">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-cass-green mb-4">Events & Activities</h2>
-          <div className="w-24 h-1 bg-cass-green mx-auto mb-4"></div>
-          <p className="text-cass-gray max-w-2xl mx-auto">
-            Join us for technical talks, workshops, conferences, and networking opportunities
-          </p>
-        </div>
+    <section id="events" className="py-20 md:py-32 bg-cass-light">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Tab Buttons */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex rounded-lg border border-gray-200 p-1 bg-white">
+        {/* Header & Tabs */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-cass-dark mb-8">
+            Events Timeline
+          </h2>
+
+          <div className="inline-flex bg-white rounded-lg p-1 shadow-sm border border-gray-200">
             <button
-              className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-                activeTab === 'upcoming'
-                  ? 'bg-cass-green text-white'
-                  : 'text-cass-gray hover:text-cass-green'
-              }`}
               onClick={() => setActiveTab('upcoming')}
+              className={`px-6 py-2.5 rounded-md font-semibold text-sm transition-all ${activeTab === 'upcoming'
+                  ? 'bg-cass-green text-white shadow'
+                  : 'text-cass-gray hover:text-cass-dark'
+                }`}
             >
               Upcoming Events
             </button>
             <button
-              className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-                activeTab === 'past'
-                  ? 'bg-cass-green text-white'
-                  : 'text-cass-gray hover:text-cass-green'
-              }`}
               onClick={() => setActiveTab('past')}
+              className={`px-6 py-2.5 rounded-md font-semibold text-sm transition-all ${activeTab === 'past'
+                  ? 'bg-cass-dark text-white shadow'
+                  : 'text-cass-gray hover:text-cass-dark'
+                }`}
             >
               Past Events
             </button>
           </div>
         </div>
 
-        {/* Events Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {(activeTab === 'upcoming' ? events.upcoming : events.past).map((event) => (
-            <div
-              key={event.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-            >
-              {/* Event Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 right-4 bg-cass-green text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  {activeTab === 'upcoming' ? 'Upcoming' : 'Past Event'}
+        {/* Timeline Layout */}
+        <div className="relative">
+          {/* Vertical Line Container */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cass-green via-cass-green/50 to-transparent transform md:-translate-x-1/2 rounded-full" />
+
+          <div className="space-y-12 md:space-y-24 relative mt-10">
+            {activeEvents.map((event, index) => {
+              const isEven = index % 2 === 0
+              return (
+                <div key={event.id} className="relative flex flex-col md:flex-row items-start md:items-center w-full">
+
+                  {/* Timeline dot */}
+                  <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-cass-green rounded-full z-10 shadow mt-6 md:mt-0" />
+
+                  {/* Content Card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    className={`w-full pl-16 md:pl-0 md:w-1/2 ${isEven ? 'md:pr-12 lg:pr-16 md:text-right' : 'md:pl-12 lg:pl-16 md:ml-auto'}`}
+                  >
+                    <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow group overflow-hidden relative">
+                      {/* Interactive overlay bar */}
+                      <div className={`absolute top-0 bottom-0 w-1 bg-cass-green transform origin-top transition-transform duration-300 scale-y-0 group-hover:scale-y-100 ${isEven ? 'right-0' : 'left-0'}`}></div>
+
+                      <div className={`flex items-center gap-3 mb-4 text-xs font-bold text-cass-green tracking-wide uppercase ${isEven ? 'md:justify-end' : ''}`}>
+                        <span className="flex items-center gap-1.5"><FiCalendar size={14} /> {event.date}</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
+                        <span className="flex items-center gap-1.5"><FiMapPin size={14} /> {event.location}</span>
+                      </div>
+
+                      <h3 className="text-xl md:text-2xl font-bold text-cass-dark mb-3">
+                        {event.title}
+                      </h3>
+                      <p className="text-cass-gray text-sm md:text-base leading-relaxed mb-6">
+                        {event.description}
+                      </p>
+
+                      <button className="text-cass-green font-semibold text-sm hover:text-cass-dark transition-colors inline-flex items-center gap-1">
+                        {activeTab === 'upcoming' ? 'Register Now' : 'Read Recap'} &rarr;
+                      </button>
+                    </div>
+                  </motion.div>
                 </div>
-              </div>
-
-              {/* Event Details */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-cass-dark mb-3">
-                  {event.title}
-                </h3>
-                
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center text-cass-gray">
-                    <FiCalendar className="mr-2 text-cass-green" />
-                    <span>{event.date}</span>
-                  </div>
-                  <div className="flex items-center text-cass-gray">
-                    <FiMapPin className="mr-2 text-cass-green" />
-                    <span>{event.location}</span>
-                  </div>
-                </div>
-
-                <p className="text-cass-gray mb-4">
-                  {event.description}
-                </p>
-
-                {activeTab === 'upcoming' && (
-                  <button className="w-full bg-cass-green text-white py-2 rounded-lg hover:bg-opacity-90 transition-colors font-semibold">
-                    Register Now
-                  </button>
-                )}
-              </div>
-            </div>
-          ))}
+              )
+            })}
+          </div>
         </div>
+
       </div>
     </section>
   )

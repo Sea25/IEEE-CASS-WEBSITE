@@ -1,10 +1,10 @@
 import React from 'react'
 import Header from './components/Header/Header'
 import Hero from './components/Hero/Hero'
-// import About from './components/About/About'
-// import Events from './components/Events/Events'
-// import Team from './components/Team/Team'
-// import Contact from './components/Contact/Contact'
+import About from './components/About/About'
+import Events from './components/Events/Events'
+import Team from './components/Team/Team'
+import Contact from './components/Contact/Contact'
 import './App.css'
 
 function App() {
@@ -13,10 +13,10 @@ function App() {
       <Header />
       <main>
         <Hero />
-        {/* <About />
+        <About />
         <Events />
         <Team />
-        <Contact /> */}
+        <Contact />
       </main>
       <footer className="bg-cass-dark text-white py-8">
         <div className="container-custom text-center">
