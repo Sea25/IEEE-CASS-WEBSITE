@@ -30,7 +30,7 @@ const Header = () => {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4 pointer-events-none">
 
-        {/* The Floating Top Pill Nav */}
+
         <motion.nav
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -40,9 +40,8 @@ const Header = () => {
             : 'bg-cass-dark/80 backdrop-blur-md border-white/10 shadow-2xl py-3 px-6 text-white'
             }`}
         >
-          {/* Logo Section */}
+
           <a href="#home" className={`flex items-center gap-3 relative z-10 transition-transform hover:scale-105 ${scrolled ? 'text-cass-dark' : 'text-white'}`}>
-            {/* Removed the circular container and directly displaying the image */}
             <img
               src="/IEEE CAS Logo.png"
               alt="IEEE CASS Kerala Chapter Logo"
@@ -57,7 +56,6 @@ const Header = () => {
             </div>
           </a>
 
-          {/* Center Links (Desktop) */}
           <div className="hidden md:flex items-center justify-center absolute inset-0 z-0">
             <div className="flex items-center gap-2">
               {navItems.map((item) => {
@@ -86,7 +84,6 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Right Action Button (Desktop) */}
           <div className="hidden md:block relative z-10">
             <a
               href="#contact"
@@ -99,7 +96,6 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Mobile Toggle Button */}
           <button
             className={`md:hidden relative z-10 p-2 rounded-full transition-colors ${scrolled ? 'text-cass-dark hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}
             onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -109,7 +105,6 @@ const Header = () => {
         </motion.nav>
       </header>
 
-      {/* Mobile Slide-out Menu Overlay */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div

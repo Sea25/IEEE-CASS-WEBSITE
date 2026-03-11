@@ -6,17 +6,14 @@ const Contact = () => {
   return (
     <footer id="contact" className="bg-gradient-to-br from-[#1a1c20] via-cass-dark to-black text-white pt-24 pb-8 border-t-[6px] border-yellow-500 relative overflow-hidden shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
 
-      {/* Decorative Premium Glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[120px] pointer-events-none transform translate-x-1/3 -translate-y-1/3" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cass-green/10 rounded-full blur-[100px] pointer-events-none transform -translate-x-1/2 translate-y-1/2" />
 
-      {/* Subtle Tech Pattern Overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDEwaDQwTTEwIDB2NDBNMCAyMGg0ME0yMCAwdjQwTTAgMzBoNDBNMzAgMHY0MCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjEiLz48L3N2Zz4=')]" />
 
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
 
-          {/* Column 1: Brand & Info */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +41,6 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Column 2: Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +61,6 @@ const Contact = () => {
             </ul>
           </motion.div>
 
-          {/* Column 3: Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +91,6 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Column 4: Stay Updated / Subscribe */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +98,6 @@ const Contact = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col bg-white/5 p-8 rounded-3xl border border-white/10 shadow-xl backdrop-blur-sm relative overflow-hidden"
           >
-            {/* Inner card glow */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl" />
 
             <h3 className="text-xl font-bold text-white mb-3 relative z-10">Stay Updated</h3>
@@ -135,10 +128,8 @@ const Contact = () => {
 
         </div>
 
-        {/* Divider line */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
 
-        {/* Bottom Credits */}
         <div className="flex flex-col md:flex-row items-center justify-between text-center gap-4">
           <p className="text-gray-500 font-medium text-sm">
             &copy; 2026 IEEE Circuits and Systems Society Kerala Section.

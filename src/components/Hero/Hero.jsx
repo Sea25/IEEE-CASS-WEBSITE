@@ -6,13 +6,12 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen pt-28 pb-20 bg-[#fefefe] overflow-hidden flex flex-col justify-center">
 
-      {/* Schematic Lines Background */}
+
       <div className="absolute inset-0 pointer-events-none opacity-20 hidden md:block">
         <div className="absolute top-0 bottom-0 left-[10%] w-[1px] bg-cass-gray" />
         <div className="absolute top-0 bottom-0 right-[10%] w-[1px] bg-cass-gray" />
         <div className="absolute left-0 right-0 top-[20%] h-[1px] bg-cass-gray" />
         <div className="absolute left-0 right-0 top-[80%] h-[1px] bg-cass-gray" />
-        {/* Intersection node dots */}
         <div className="absolute top-[20%] left-[10%] w-1.5 h-1.5 bg-cass-green transform -translate-x-1/2 -translate-y-1/2 rounded-full" />
         <div className="absolute top-[80%] right-[10%] w-1.5 h-1.5 bg-cass-green transform -translate-x-1/2 -translate-y-1/2 rounded-full" />
       </div>
@@ -21,7 +20,6 @@ const Hero = () => {
 
         <div className="grid md:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-          {/* Main Title Area */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,14 +59,12 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Minimalist Stats Pane */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-6 lg:ml-10"
           >
-            {/* Stat Block 1 */}
             <div className="relative p-6 border border-gray-100 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <FiGlobe size={40} className="text-cass-green" />
@@ -77,7 +73,6 @@ const Hero = () => {
               <p className="text-xs uppercase tracking-widest font-semibold text-cass-gray/60">Active Members</p>
             </div>
 
-            {/* Stat Block 2 */}
             <div className="relative p-6 border border-gray-100 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow group">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <FiActivity size={40} className="text-cass-green" />
@@ -86,7 +81,6 @@ const Hero = () => {
               <p className="text-xs uppercase tracking-widest font-semibold text-cass-gray/60">Annual Events</p>
             </div>
 
-            {/* Stat Block 3 */}
             <div className="relative p-6 border border-gray-100 bg-cass-green rounded-2xl shadow-sm hover:shadow-md hover:shadow-cass-green/20 transition-shadow group">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-white">
                 <FiAward size={40} />

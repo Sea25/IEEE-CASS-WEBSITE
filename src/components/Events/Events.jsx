@@ -11,7 +11,7 @@ const Events = () => {
     <section id="events" className="py-20 md:py-32 bg-cass-light">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header & Tabs */}
+
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-cass-dark mb-8">
             Events Timeline
@@ -21,8 +21,8 @@ const Events = () => {
             <button
               onClick={() => setActiveTab('upcoming')}
               className={`px-6 py-2.5 rounded-md font-semibold text-sm transition-all ${activeTab === 'upcoming'
-                  ? 'bg-cass-green text-white shadow'
-                  : 'text-cass-gray hover:text-cass-dark'
+                ? 'bg-cass-green text-white shadow'
+                : 'text-cass-gray hover:text-cass-dark'
                 }`}
             >
               Upcoming Events
@@ -30,8 +30,8 @@ const Events = () => {
             <button
               onClick={() => setActiveTab('past')}
               className={`px-6 py-2.5 rounded-md font-semibold text-sm transition-all ${activeTab === 'past'
-                  ? 'bg-cass-dark text-white shadow'
-                  : 'text-cass-gray hover:text-cass-dark'
+                ? 'bg-cass-dark text-white shadow'
+                : 'text-cass-gray hover:text-cass-dark'
                 }`}
             >
               Past Events
@@ -39,9 +39,7 @@ const Events = () => {
           </div>
         </div>
 
-        {/* Timeline Layout */}
         <div className="relative">
-          {/* Vertical Line Container */}
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cass-green via-cass-green/50 to-transparent transform md:-translate-x-1/2 rounded-full" />
 
           <div className="space-y-12 md:space-y-24 relative mt-10">
@@ -50,10 +48,10 @@ const Events = () => {
               return (
                 <div key={event.id} className="relative flex flex-col md:flex-row items-start md:items-center w-full">
 
-                  {/* Timeline dot */}
+
                   <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-4 border-cass-green rounded-full z-10 shadow mt-6 md:mt-0" />
 
-                  {/* Content Card */}
+
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +59,7 @@ const Events = () => {
                     className={`w-full pl-16 md:pl-0 md:w-1/2 ${isEven ? 'md:pr-12 lg:pr-16 md:text-right' : 'md:pl-12 lg:pl-16 md:ml-auto'}`}
                   >
                     <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow group overflow-hidden relative">
-                      {/* Interactive overlay bar */}
+
                       <div className={`absolute top-0 bottom-0 w-1 bg-cass-green transform origin-top transition-transform duration-300 scale-y-0 group-hover:scale-y-100 ${isEven ? 'right-0' : 'left-0'}`}></div>
 
                       <div className={`flex items-center gap-3 mb-4 text-xs font-bold text-cass-green tracking-wide uppercase ${isEven ? 'md:justify-end' : ''}`}>

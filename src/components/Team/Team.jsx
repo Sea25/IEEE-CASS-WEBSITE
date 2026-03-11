@@ -4,7 +4,7 @@ import { FiArrowRight, FiLinkedin, FiMail } from 'react-icons/fi'
 import { teamMembers } from '../../data/dummyData'
 
 const Team = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(0) // Default expand the first item
+  const [hoveredIndex, setHoveredIndex] = useState(0)
 
   return (
     <section id="team" className="py-24 bg-cass-dark overflow-hidden">
@@ -32,11 +32,6 @@ const Team = () => {
           </div>
         </div>
 
-        {/* 
-          Horizontal Expanding Accordion (Filmstrip)
-          On desktop: Left-to-right flex that expands the hovered card.
-          On mobile: Vertical scrolling stack.
-        */}
         <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[32rem]">
           {teamMembers.map((member, index) => {
             const isHovered = hoveredIndex === index
@@ -51,17 +46,12 @@ const Team = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className={`relative rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-500 ease-out flex-shrink-0 lg:flex-shrink ${isHovered
-                    ? 'lg:flex-[3] bg-cass-green shadow-2xl h-[28rem] lg:h-full'
-                    : 'lg:flex-[1] bg-white/5 border border-white/10 h-24 lg:h-full group hover:bg-white/10'
+                  ? 'lg:flex-[3] bg-cass-green shadow-2xl h-[28rem] lg:h-full'
+                  : 'lg:flex-[1] bg-white/5 border border-white/10 h-24 lg:h-full group hover:bg-white/10'
                   }`}
               >
-                {/* 
-                  Mobile View (Collapsed): Show simple row
-                  Desktop View (Collapsed): Show vertical name
-                */}
                 <div className={`absolute inset-0 p-6 flex items-center lg:items-end lg:justify-center transition-opacity duration-300 ${isHovered ? 'opacity-0 pointer-events-none' : 'opacity-100'
                   }`}>
-                  {/* Mobile text */}
                   <div className="lg:hidden flex items-center gap-4 w-full">
                     <img src={member.image} alt={member.name} className="w-12 h-12 rounded-full object-cover filter grayscale" />
                     <div>
@@ -70,7 +60,6 @@ const Team = () => {
                     </div>
                   </div>
 
-                  {/* Desktop vertical text */}
                   <div className="hidden lg:flex w-full h-full pb-8 flex-col items-center justify-end">
                     <div className="whitespace-nowrap -rotate-180 writing-vertical-rl text-white/50 text-xl font-bold tracking-widest uppercase mb-8 group-hover:text-cass-green transition-colors">
                       {member.name}
@@ -81,7 +70,6 @@ const Team = () => {
                   </div>
                 </div>
 
-                {/* Expanded State Content */}
                 <AnimatePresence>
                   {isHovered && (
                     <motion.div
@@ -91,7 +79,6 @@ const Team = () => {
                       transition={{ duration: 0.3 }}
                       className="absolute inset-0 w-full h-full flex flex-col justify-end"
                     >
-                      {/* Background Image filling the card */}
                       <img
                         src={member.image}
                         alt={member.name}
@@ -99,7 +86,6 @@ const Team = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-cass-dark via-cass-dark/60 to-transparent" />
 
-                      {/* Info Panel over the image */}
                       <div className="relative z-10 p-6 lg:p-8 w-full">
                         <motion.div
                           initial={{ y: 20, opacity: 0 }}

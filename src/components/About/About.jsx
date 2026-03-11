@@ -11,7 +11,6 @@ const About = () => {
     <section id="about" className="py-24 md:py-32 bg-[#fafafa]">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
 
-        {/* Extremely Clean Editorial Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-200 pb-12 mb-16 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -37,10 +36,8 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Spacious 2-Column Grid */}
         <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
 
-          {/* Left Column - Vision & Mission */}
           <div className="space-y-16">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -83,7 +80,6 @@ const About = () => {
             </motion.div>
           </div>
 
-          {/* Right Column - Focus Areas & Image */}
           <div className="space-y-12">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -91,7 +87,6 @@ const About = () => {
               viewport={{ once: true }}
               className="bg-cass-dark rounded-xl p-8 lg:p-12 shadow-2xl relative overflow-hidden"
             >
-              {/* Decorative gradient orb */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-cass-green/20 rounded-full blur-[50px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
               <h3 className="text-lg font-bold text-white mb-8 tracking-wide">Core Research Areas</h3>
