@@ -1,119 +1,110 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FiCheckCircle } from 'react-icons/fi'
 
 const About = () => {
   const focusAreas = [
-    'VLSI Design', 'Analog Circuits', 'Signal Processing',
-    'Embedded Systems', 'Power Electronics', 'RF & Microwave',
-    'Neural Networks', 'IoT Systems', 'Mixed-Signal Design', 'FPGA Design'
+    'VLSI & Architecture', 'Analog & Mixed Signal', 'Digital Signal Processing',
+    'Sensors & IoT', 'Power & Energy Circuits', 'AI & Neural Networks'
   ]
 
   return (
-    <section id="about" className="py-20 md:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-24 md:py-32 bg-[#fafafa]">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
 
-        {/* Title Section */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <motion.h2
+        {/* Extremely Clean Editorial Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-200 pb-12 mb-16 gap-8">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-cass-dark mb-6"
+            className="max-w-xl"
           >
-            About <span className="text-cass-green">IEEE CASS</span> Kerala
-          </motion.h2>
-          <motion.p
+            <span className="text-cass-green text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
+              About The Chapter
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-cass-dark leading-tight tracking-tight">
+              Engineering the foundation of modern technology.
+            </h2>
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-cass-gray leading-relaxed"
+            className="md:w-[40%] text-sm text-cass-gray/80 font-light leading-relaxed"
           >
-            Dedicated to the advancement of theory, analysis, and implementation of circuits and systems for a better tomorrow.
-          </motion.p>
+            We are dedicated to the advancement of theory, analysis, design, and implementation of circuits and systems. We bridge the gap between academic research and practical industry application.
+          </motion.div>
         </div>
 
-        {/* Narrative Flow - Alternating Rows */}
-        <div className="space-y-24">
+        {/* Spacious 2-Column Grid */}
+        <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
 
-          {/* Vision Row */}
-          <div className="flex flex-col md:flex-row items-center gap-12">
+          {/* Left Column - Vision & Mission */}
+          <div className="space-y-16">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex-1 w-full order-2 md:order-1"
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-cass-dark mb-4 border-l-4 border-cass-green pl-4">Our Vision</h3>
-              <p className="text-cass-gray text-lg leading-relaxed bg-gray-50 p-6 md:p-8 rounded-2xl md:rounded-r-3xl">
-                To be the core hub for circuits and systems innovation in Kerala, nurturing cutting-edge research, hands-on education, and thriving industry collaboration. We envision a community where ideas seamlessly transition into impactful technology.
+              <div className="flex items-center gap-4 mb-6">
+                <span className="w-8 h-[1px] bg-cass-green block" />
+                <h3 className="text-lg font-bold text-cass-dark tracking-wide">Our Vision</h3>
+              </div>
+              <p className="text-base text-cass-gray leading-loose font-light">
+                To serve as the definitive hub for circuits and systems innovation in Kerala. We aim to nurture cutting-edge research, hands-on education, and thriving industry collaboration, building a community where ideas seamlessly transition into impactful technology.
               </p>
             </motion.div>
+
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex-1 w-full order-1 md:order-2"
+              transition={{ delay: 0.1 }}
             >
-              <div className="aspect-video bg-cass-dark rounded-3xl overflow-hidden relative shadow-2xl flex items-center justify-center p-8 text-center">
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cass-green to-transparent"></div>
-                <p className="text-2xl md:text-4xl font-light text-white italic z-10 leading-snug">"Empowering minds to design the future."</p>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="w-8 h-[1px] bg-cass-green block" />
+                <h3 className="text-lg font-bold text-cass-dark tracking-wide">Our Mission</h3>
               </div>
+              <ul className="space-y-4 text-base text-cass-gray font-light">
+                <li className="flex items-start gap-4">
+                  <span className="text-cass-green mt-1 text-xs">01</span>
+                  <span className="leading-relaxed">Promote technical excellence through globally recognized conferences, workshops, and publications.</span>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className="text-cass-green mt-1 text-xs">02</span>
+                  <span className="leading-relaxed">Foster high-level collaboration across academic borders and industry boundaries.</span>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className="text-cass-green mt-1 text-xs">03</span>
+                  <span className="leading-relaxed">Support student members through dedicated mentorship and deep-tech networking opportunities.</span>
+                </li>
+              </ul>
             </motion.div>
           </div>
 
-          {/* Mission Row */}
-          <div className="flex flex-col md:flex-row items-center gap-12">
+          {/* Right Column - Focus Areas & Image */}
+          <div className="space-y-12">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="flex-1 w-full"
+              className="bg-cass-dark rounded-xl p-8 lg:p-12 shadow-2xl relative overflow-hidden"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  "Promote Technical Excellence",
-                  "Foster Industry Work",
-                  "Support Student Mentorship",
-                  "Advance Deep Tech Research"
-                ].map((item, i) => (
-                  <div key={i} className="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3">
-                    <FiCheckCircle className="text-cass-green text-3xl" />
-                    <span className="font-semibold text-cass-dark text-lg">{item}</span>
+              {/* Decorative gradient orb */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-cass-green/20 rounded-full blur-[50px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
+              <h3 className="text-lg font-bold text-white mb-8 tracking-wide">Core Research Areas</h3>
+              <div className="flex flex-col gap-4">
+                {focusAreas.map((area, idx) => (
+                  <div key={idx} className="flex items-center gap-4 text-white/80 group">
+                    <span className="w-2 h-2 rounded-full border border-cass-green group-hover:bg-cass-green transition-colors" />
+                    <span className="text-sm font-light tracking-wide">{area}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex-1 w-full"
-            >
-              <h3 className="text-2xl md:text-3xl font-bold text-cass-dark mb-4 border-l-4 border-cass-green pl-4">Our Mission</h3>
-              <p className="text-cass-gray text-lg leading-relaxed mb-6">
-                We are on a structured path to bridge the gap between academic research and practical industry application. Through relentless mentorship and global networking, we ensure our members are always at the forefront of tech.
-              </p>
-            </motion.div>
           </div>
-
-          {/* Focus Areas Footer */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="pt-16 border-t border-gray-100"
-          >
-            <h3 className="text-center text-xl font-bold text-cass-dark mb-8">Core Focus Areas</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {focusAreas.map(area => (
-                <span key={area} className="px-5 py-2.5 bg-cass-light text-cass-dark rounded-lg font-medium text-sm hover:bg-cass-green hover:text-white transition-colors cursor-default border border-gray-200">
-                  {area}
-                </span>
-              ))}
-            </div>
-          </motion.div>
 
         </div>
       </div>
