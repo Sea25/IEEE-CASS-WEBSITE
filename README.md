@@ -1,29 +1,16 @@
-✨ Features
-Fully Responsive Design - Optimized for mobile, tablet, and desktop devices
+# React + Vite
 
-Hero Section - Engaging landing area with chapter statistics
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-About Section - Vision, mission, and technical focus areas
+Currently, two official plugins are available:
 
-Events Showcase - Upcoming and past events with registration CTAs
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Team Grid - Executive committee profiles with interactive hover effects
+## React Compiler
 
-Contact Form - Functional form with success feedback
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-Social Media Integration - Links to all chapter social platforms
+## Expanding the ESLint configuration
 
-Smooth Animations - Subtle transitions and hover effects
-
-IEEE Brand Compliant - Strictly follows CASS branding guidelines
-
-🛠️ Tech Stack
-Category	Technology	Purpose
-Core	React 18	UI component library
-Build Tool	Vite 5	Fast development & optimized builds
-Styling	Tailwind CSS 3	Utility-first CSS framework
-Icons	React Icons	Feather icon set
-Animations	Framer Motion	Smooth transitions
-Forms	React Hook Form	Contact form handling
-Deployment	Vercel	Hosting & continuous deployment
-
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
